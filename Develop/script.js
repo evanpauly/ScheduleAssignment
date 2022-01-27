@@ -1,19 +1,29 @@
-var tasks = {};
+displayDate = $('#currentDay')
+saveBtn = $('.saveBtn')
+currentHour = Number(moment().format('LT'))
 
-var saveTasks = function() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-};
+$(document).ready(function () {
+    var currentDay = moment().format('dddd, MMMM Do YYYY')
+    displayDate.html(currentDay);
 
-$(".container").on("click", "p", function() {
-    // get current text of p element
-    var text = $(this)
-      .text()
-      .trim();
-      
-  // replace p element with a new textarea
-  var textInput = $("<textarea>").addClass("form-control").val(text);
-  $(this).replaceWith(textInput);
+    var localStorage = function () {
 
-  // auto focus new element
-  textInput.trigger("focus");
-});
+    }
+
+    localStorage();
+    
+    $('.row').each(function(){
+        var hour = Number($(this).children()[0].getAttribute('id'))
+        var time = $(this).children()[1]
+
+        if (currentHour === hour) {
+            $(time).addClass('present')
+        } else if (currentHour > hour) {
+            $(time).addClass('past')
+        } else if (currentHour < hour) {
+            $(time).addClass('future')
+        }    
+        
+    })
+
+})
