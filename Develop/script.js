@@ -7,6 +7,7 @@ $(document).ready(function () {
     displayDate.html(currentDay);
 
     var useLocalStorage = function () {
+        $('input[name="hour-8"]').val(localStorage.getItem('8'));
         $('input[name="hour-9"]').val(localStorage.getItem('9'));
         $('input[name="hour-10"]').val(localStorage.getItem('10'));
         $('input[name="hour-11"]').val(localStorage.getItem('11'));
